@@ -32,12 +32,15 @@ in {
 
   options.boot.loader.asahi = {
     m1n1 = {
-      package = lib.mkPackageOption pkgs "Custom package override for Asahi m1n1" {
+      package = lib.mkOption {
+        type = lib.types.package;
         default = pkgs.m1n1.override {
           isRelease = true;
           withTools = false;
           customLogo = config.boot.loader.asahi.m1n1.customLogo;
         };
+        defaultText = "An m1n1 package built in release mode and with the custom logo set in `boot.loader.asahi.m1n1.customLogo`.";
+        description = "Custom package override for Asahi m1n1";
       };
 
       extraOptions = lib.mkOption {
@@ -60,10 +63,13 @@ in {
     };
 
     uboot = {
-      package = lib.mkPackageOption pkgs "Custom package override for Asahi U-Boot" {
+      package = lib.mkOption {
+        type = lib.types.package;
         default = pkgs.uboot-asahi.override {
           m1n1 = config.boot.loader.asahi.m1n1.package;
         };
+        defaultText = "A U-Boot package that uses the m1n1 from `boot.loader.asahi.m1n1.package`.";
+        description = "Custom package override for Asahi U-Boot";
       };
     };
   };
