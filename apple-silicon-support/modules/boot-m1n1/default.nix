@@ -17,7 +17,11 @@ in {
     boot.loader.systemd-boot.extraFiles = bootFiles;
 
     # ensure the installer has m1n1 in the image
-    system.extraDependencies = lib.mkForce [ bootM1n1 bootUBoot ];
+    system.extraDependencies = lib.mkForce [
+      config.boot.loader.asahi.m1n1.package
+      config.boot.loader.asahi.uboot.package
+    ];
+
     system.build.m1n1 = bootFiles."m1n1/boot.bin";
   };
 
