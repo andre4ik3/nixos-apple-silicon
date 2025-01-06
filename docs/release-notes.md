@@ -2,6 +2,56 @@
 
 This file contains important information for each release.
 
+## 2024-12-25
+
+This release updates nixpkgs, the kernel, and Mesa.
+
+The kernel config is fixed to prevent an issue which, in combination with a bug
+in nixpkgs, caused boot failure when using systemd in initrd. Thanks to
+andre4ik3 and several others for helping diagnose and provide hints to find
+this issue.
+
+The Wi-Fi issue persists, but will likely be resolved by an imminent nixpkgs
+update.
+
+## 2024-12-04
+
+This release updates nixpkgs and all the Asahi components.
+
+The big new feature is Vulkan support thanks to Asahi's hard work on Mesa! The
+kernel contains a graphics UAPI update, so you must reboot after updating to
+restore graphics acceleration.
+
+There might be trouble with Wi-Fi in the installer failing to connect to certain
+networks, please report on GitHub and use an older version temporarily if you
+encounter this issue.
+
+## 2024-11-30
+
+This release updates nixpkgs.
+
+Updating nixpkgs brings us past the 24.11 release and on the path to 25.05. This
+release also fixes builds with the version of systemd fixed to not cause
+bootability issues.
+
+Updates to other Asahi components are imminent.
+
+## 2024-11-12
+
+This release updates nixpkgs.
+
+**This release fixes an issue that will cause NixOS to be unbootable after an
+  upgrade.** This was caused by a systemd update in recent nixpkgs revisions.
+If you are affected, please see the information
+[here](https://github.com/tpwrules/nixos-apple-silicon/issues/248)
+to recover.
+
+Thanks in particular to oliverbestmann and andre4ik3 for their work reporting
+and diagnosing this issue.
+
+This release also fixes build issues with Rust 1.82.0. Updates to other Asahi
+components will follow.
+
 ## 2024-09-03
 
 This release updates nixpkgs, the kernel, the Asahi audio configs, and
